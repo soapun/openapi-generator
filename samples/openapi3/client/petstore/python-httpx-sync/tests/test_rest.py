@@ -20,7 +20,7 @@ class TestMultipleResponseTypes(unittest.TestCase):
 
     def test_multipart_requests(self):
         mock_resp = Mock()
-        mock_resp.return_value.aread.return_value = b"some text"
+        mock_resp.return_value.read.return_value = b"some text"
         mock_resp.return_value.status_code = 200
         mock_resp.return_value.headers = {}
 
@@ -38,7 +38,7 @@ class TestMultipleResponseTypes(unittest.TestCase):
     def test_multipart_requests_with_file_and_additional_properties(self):
         mock_resp = Mock()
         mock_resp.status_code = 200
-        mock_resp.aread = Mock(
+        mock_resp.read = Mock(
             return_value=b'{"code": 200, "type": "success", "message": "OK"}'
         )
         mock_resp.headers = {"Content-Type": "application/json"}
