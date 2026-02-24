@@ -227,7 +227,7 @@ class TestPetApiTests(unittest.TestCase):
 
             with self.assertRaisesRegex(
                 petstore_api.rest.httpx.ConnectError,
-                "[Errno 111] Connection refused",
+                "\[Errno 111\] Connection refused",
             ):
                 pet_api.get_pet_by_id(self.pet.id)
 
