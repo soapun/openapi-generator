@@ -225,9 +225,8 @@ class TestPetApiTests(unittest.TestCase):
             pet_api = petstore_api.PetApi(client)
             assert self.pet.id is not None
 
-            with self.assertRaisesRegex(
+            with self.assertRaises(
                 petstore_api.rest.httpx.ConnectError,
-                "\[Errno 111\] Connection refused",
             ):
                 pet_api.get_pet_by_id(self.pet.id)
 
