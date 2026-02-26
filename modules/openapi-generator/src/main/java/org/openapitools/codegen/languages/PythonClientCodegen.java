@@ -327,7 +327,6 @@ public class PythonClientCodegen extends AbstractPythonCodegen implements Codege
             supportingFiles.add(new SupportingFile("__init__.mustache", testFolder, "__init__.py"));
         }
 
-        supportingFiles.add(new SupportingFile("api_client.mustache", packagePath(), "api_client.py"));
         supportingFiles.add(new SupportingFile("api_response.mustache", packagePath(), "api_response.py"));
 
         if ("asyncio".equals(getLibrary())) {
@@ -339,6 +338,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen implements Codege
             additionalProperties.put("tornado", "true");
         } else if ("httpx".equals(getLibrary())) {
             supportingFiles.add(new SupportingFile("httpx/rest.mustache", packagePath(), "rest.py"));
+            supportingFiles.add(new SupportingFile("httpx/api_client.mustache", packagePath(), "api_client.py"));
             additionalProperties.put("async", "true");
             additionalProperties.put("httpx", "true");
         } else if ("httpx-sync".equals(getLibrary())) {
@@ -346,6 +346,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen implements Codege
             additionalProperties.put("httpx", "true");
         } else {
             supportingFiles.add(new SupportingFile("rest.mustache", packagePath(), "rest.py"));
+            supportingFiles.add(new SupportingFile("api_client.mustache", packagePath(), "api_client.py"));
         }
 
         modelPackage = this.packageName + "." + modelPackage;
